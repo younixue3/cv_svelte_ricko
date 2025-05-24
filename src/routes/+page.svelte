@@ -266,25 +266,25 @@
         {#if mounted}
         <div class="mx-auto" in:fade|local={{duration: 1000, delay: 200}}>
             <div class="bg-gradient-to-b from-gray-100 to-gray-200 transform transition-all duration-500 backdrop-blur-lg">
-                <div class="relative flex min-h-[700px]">
-                    <div class="w-1/3 flex relative ml-72">
-                        <div class="group z-0 hover:z-10">
+                <div class="relative flex flex-col lg:flex-row min-h-[700px] px-4 lg:px-0">
+                    <div class="w-full lg:w-1/3 flex relative lg:ml-72 mt-8 lg:mt-0">
+                        <div class="group z-0 hover:z-10 w-48 mx-auto lg:w-full">
                             <img 
-                                    src={logo} 
-                                    alt="Ricko Tiaka" 
-                                    class="w-full h-full object-cover transform group-hover:scale-150 transition-transform duration-700  brightness-110"
-                                    loading="eager"
-                                    decoding="async"
-                                >
+                                src={logo} 
+                                alt="Ricko Tiaka" 
+                                class="w-full h-full object-cover transform md:group-hover:scale-150 transition-transform duration-700 brightness-110"
+                                loading="eager"
+                                decoding="async"
+                            >
                             
-                            <div class="absolute inset-0 backdrop-blur-sm group-hover:backdrop-blur-0 transition-all ease-in-out"></div>
+                            <div class="hidden md:block absolute inset-0 backdrop-blur-sm group-hover:backdrop-blur-0 transition-all ease-in-out"></div>
                         </div>
                     </div>
                     
-                    <div class="absolute transform hover:scale-110 z-0 hover:z-10 flex px-4 left-1/2 top-1/3 transition-all ease-in-out duration-500">
-                        <div class="bg-white/95 backdrop-blur-lg p-12 w-[32rem] rounded-3xl shadow-2xl hover:shadow-indigo-100/50 transform hover:scale-[1.02] transition-all duration-700" 
+                    <div class="relative lg:absolute transform hover:scale-110 z-0 hover:z-10 flex px-4 lg:left-1/2 lg:top-1/3 transition-all ease-in-out duration-500 w-full lg:w-auto">
+                        <div class="bg-white/95 backdrop-blur-lg p-6 lg:p-12 w-full lg:w-[32rem] rounded-3xl shadow-2xl hover:shadow-indigo-100/50 transform hover:scale-[1.02] transition-all duration-700" 
                              in:fly|local={{x: 50, duration: 1500, delay: 700}}>
-                            <h1 class="text-6xl md:text-4xl font-bold text-gray-900 mb-8 tracking-tighter">
+                            <h1 class="text-4xl lg:text-6xl font-bold text-gray-900 mb-6 lg:mb-8 tracking-tighter">
                                 Hi, I'm <span class="group text-indigo-600 hover:text-indigo-700 transition-colors duration-500 relative inline-block">
                                     Ricko Tiaka
                                     <span class="absolute -bottom-1 left-0 w-full h-0.5 bg-indigo-600 transform scale-x-0 transition-transform duration-500 origin-left group-hover:scale-x-100"></span>
@@ -295,30 +295,30 @@
                                 A seasoned Frontend Developer with 4 years of experience specializing in crafting exceptional web experiences. My expertise spans across startups, travel industry, and enterprise solutions for both private and government sectors. I transform complex requirements into intuitive, user-friendly interfaces that drive engagement and operational efficiency.
                             </p>
                             
-                            <div class="flex flex-wrap gap-5" in:scale|local={{duration: 700, delay: 1100}} role="list" aria-label="Technical skills">
-                                <div class="group relative overflow-hidden bg-green-200 px-5 py-2.5 rounded-2xl transform hover:scale-110 transition-all duration-500 hover:shadow-lg hover:shadow-green-100/50 cursor-pointer"
+                            <div class="flex flex-wrap justify-center sm:justify-start gap-3 sm:gap-5" in:scale|local={{duration: 700, delay: 1100}} role="list" aria-label="Technical skills">
+                                <div class="group relative overflow-hidden bg-green-200 px-4 sm:px-5 py-2 sm:py-2.5 rounded-xl sm:rounded-2xl transform hover:scale-105 sm:hover:scale-110 transition-all duration-500 hover:shadow-lg hover:shadow-green-100/50 cursor-pointer w-full sm:w-auto"
                                     role="listitem">
                                     <div class="absolute inset-0 bg-green-300 transform scale-x-0 transition-transform origin-left group-hover:scale-x-100 ease-out duration-500"></div>
-                                    <span class="relative z-10 text-green-800 text-sm font-medium group-hover:font-semibold flex items-center">
-                                        <i class="fab fa-python mr-2.5 transition-transform group-hover:rotate-12 duration-500" aria-hidden="true"></i>
+                                    <span class="relative z-10 text-green-800 text-xs sm:text-sm font-medium group-hover:font-semibold flex items-center justify-center sm:justify-start">
+                                        <i class="fab fa-python mr-2 sm:mr-2.5 transition-transform group-hover:rotate-12 duration-500" aria-hidden="true"></i>
                                         Django
                                     </span>
                                 </div>
 
-                                <div class="group relative overflow-hidden bg-blue-200 px-5 py-2.5 rounded-2xl transform hover:scale-110 transition-all duration-500 hover:shadow-lg hover:shadow-blue-100/50 cursor-pointer"
+                                <div class="group relative overflow-hidden bg-blue-200 px-4 sm:px-5 py-2 sm:py-2.5 rounded-xl sm:rounded-2xl transform hover:scale-105 sm:hover:scale-110 transition-all duration-500 hover:shadow-lg hover:shadow-blue-100/50 cursor-pointer w-full sm:w-auto"
                                     role="listitem">
                                     <div class="absolute inset-0 bg-blue-300 transform scale-x-0 transition-transform origin-left group-hover:scale-x-100 ease-out duration-500"></div>
-                                    <span class="relative z-10 text-blue-800 text-sm font-medium group-hover:font-semibold flex items-center">
-                                        <i class="fab fa-react mr-2.5 transition-transform group-hover:rotate-12 duration-500" aria-hidden="true"></i>
+                                    <span class="relative z-10 text-blue-800 text-xs sm:text-sm font-medium group-hover:font-semibold flex items-center justify-center sm:justify-start">
+                                        <i class="fab fa-react mr-2 sm:mr-2.5 transition-transform group-hover:rotate-12 duration-500" aria-hidden="true"></i>
                                         React
                                     </span>
                                 </div>
 
-                                <div class="group relative overflow-hidden bg-red-200 px-5 py-2.5 rounded-2xl transform hover:scale-110 transition-all duration-500 hover:shadow-lg hover:shadow-red-100/50 cursor-pointer"
+                                <div class="group relative overflow-hidden bg-red-200 px-4 sm:px-5 py-2 sm:py-2.5 rounded-xl sm:rounded-2xl transform hover:scale-105 sm:hover:scale-110 transition-all duration-500 hover:shadow-lg hover:shadow-red-100/50 cursor-pointer w-full sm:w-auto"
                                     role="listitem">
                                     <div class="absolute inset-0 bg-red-300 transform scale-x-0 transition-transform origin-left group-hover:scale-x-100 ease-out duration-500"></div>
-                                    <span class="relative z-10 text-red-800 text-sm font-medium group-hover:font-semibold flex items-center">
-                                        <i class="fab fa-laravel mr-2.5 transition-transform group-hover:rotate-12 duration-500" aria-hidden="true"></i>
+                                    <span class="relative z-10 text-red-800 text-xs sm:text-sm font-medium group-hover:font-semibold flex items-center justify-center sm:justify-start">
+                                        <i class="fab fa-laravel mr-2 sm:mr-2.5 transition-transform group-hover:rotate-12 duration-500" aria-hidden="true"></i>
                                         Laravel
                                     </span>
                                 </div>
