@@ -35,16 +35,22 @@
 
     const experiences = [
         {
+            title: "Full-Stack Developer",
+            company: "Keiko Julia",
+            period: "Oct 2025 - Present",
+            skills: ["Next.JS", "React Native", "Firebase", "Android", "iOS"]
+        },
+        {
             title: "Software Engineer",
             company: "Expertri",
-            period: "Apr 2025 - Present",
-            skills: ["Vue.js", "React", "Node.js", "TypeScript"]
+            period: "Apr 2025 - Sep 2025",
+            skills: ["Odoo ERP", "Python", "Tailwind CSS"]
         },
         {
             title: "Junior Software Engineer",
             company: "Expertri", 
             period: "Jan 2025 - Apr 2025",
-            skills: ["JavaScript", "React", "Node.js"]
+            skills: ["Odoo ERP", "Python", "Tailwind CSS"]
         },
         {
             title: "Frontend Developer",
