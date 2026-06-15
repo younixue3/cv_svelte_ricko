@@ -15,15 +15,6 @@
 
       <div class="flex items-center gap-4">
         <a
-          href="https://itsmericko.vercel.app"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="inline-flex items-center gap-2 text-gray-400 hover:text-white text-sm transition-colors duration-300"
-        >
-          <i class="fa-solid fa-globe"></i>
-          Portfolio
-        </a>
-        <a
           href="mailto:bussiness.needs.rctka@gmail.com"
           class="inline-flex items-center gap-2 bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 shadow-lg rounded-full px-6 py-2.5 text-sm font-medium transition-all duration-300 hover:shadow-purple-500/25"
         >
