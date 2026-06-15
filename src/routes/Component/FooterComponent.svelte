@@ -1,66 +1,72 @@
 <script>
-    import logo from '$lib/asset/photo1x1.png';
+  import logo from '$lib/asset/photo1x1.png';
 </script>
 
-<footer class="fixed bottom-0 z-50 w-full">
-    <div class="flex justify-center">
-        <div class="bg-gray-800/90 backdrop-blur-sm h-16 w-auto md:w-2/3 rounded-t-3xl flex px-10 gap-10 items-center text-white">
-            <div class="flex-1 flex relative items-center gap-4">
-                <img src={logo} alt="Logo" class="h-8 w-8 rounded-full" />
-                <span class="sr-only">Email:</span>
-                <span>bussiness.needs.rctka@gmail.com</span>
-            </div>
-
-            <a 
-                href="mailto:bussiness.needs.rctka@gmail.com"
-                class="animate-bounce flex items-center gap-2 bg-gradient-to-r from-purple-500 to-pink-500 shadow-lg rounded-full px-6 py-2 text-sm font-medium whitespace-nowrap focus:outline-none focus:ring-2 focus:ring-pink-400"
-                aria-label="Send email to bussiness.needs.rctka@gmail.com"
-            >
-                <i class="fa-solid fa-envelope"></i>
-                Contact Me
-            </a>
-            
-            <div class="flex gap-8">
-                <a 
-                    class="social-link group relative"
-                    href="https://www.instagram.com/mynameis.ricko/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label="Instagram"
-                >
-                    <span class="tooltip">Instagram</span>
-                    <i class="fa-brands fa-instagram text-xl"></i>
-                </a>
-                <a 
-                    class="social-link group relative"
-                    href="https://www.linkedin.com/in/ricko-caesar-aprilla-tiaka-191095200/details/projects/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label="LinkedIn"
-                >
-                    <span class="tooltip">LinkedIn</span>
-                    <i class="fa-brands fa-linkedin text-xl"></i>
-                </a>
-                <a 
-                    class="social-link group relative"
-                    href="https://github.com/younixue3"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label="GitHub"
-                >
-                    <span class="tooltip">GitHub</span>
-                    <i class="fa-brands fa-github text-xl"></i>
-                </a>
-            </div>
+<footer class="bg-gray-900 text-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <div class="flex flex-col lg:flex-row items-center justify-between gap-8">
+      <div class="flex items-center gap-3">
+        <img src={logo} alt="Ricko Tiaka" class="h-10 w-10 rounded-full ring-2 ring-white/20" />
+        <div>
+          <p class="text-sm font-medium">Ricko Caesar Aprilla Tiaka</p>
+          <p class="text-xs text-gray-400">Frontend & Full-Stack Developer</p>
         </div>
-    </div>
-</footer>
+      </div>
 
-<style lang="postcss">
-    .social-link {
-        @apply transition-all duration-300 ease-in-out opacity-75 hover:opacity-100 hover:scale-110 focus:opacity-100 focus:scale-110 outline-none;
-    }
-    .tooltip {
-        @apply invisible group-hover:visible group-focus:visible absolute -top-8 left-1/2 -translate-x-1/2 px-3 py-1.5 bg-white text-gray-800 text-xs font-medium rounded-full shadow-lg;
-    }
-</style>
+      <div class="flex items-center gap-4">
+        <a
+          href="https://itsmericko.vercel.app"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-2 text-gray-400 hover:text-white text-sm transition-colors duration-300"
+        >
+          <i class="fa-solid fa-globe"></i>
+          Portfolio
+        </a>
+        <a
+          href="mailto:bussiness.needs.rctka@gmail.com"
+          class="inline-flex items-center gap-2 bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 shadow-lg rounded-full px-6 py-2.5 text-sm font-medium transition-all duration-300 hover:shadow-purple-500/25"
+        >
+          <i class="fa-solid fa-envelope"></i>
+          Contact Me
+        </a>
+      </div>
+
+      <div class="flex items-center gap-6">
+        <a
+          href="https://www.instagram.com/mynameis.ricko/"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Instagram"
+          class="text-gray-400 hover:text-pink-400 transition-colors duration-300 hover:scale-110 transform"
+        >
+          <i class="fa-brands fa-instagram text-xl"></i>
+        </a>
+        <a
+          href="https://www.linkedin.com/in/ricko-caesar-aprilla-tiaka-191095200/details/projects/"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="LinkedIn"
+          class="text-gray-400 hover:text-blue-400 transition-colors duration-300 hover:scale-110 transform"
+        >
+          <i class="fa-brands fa-linkedin text-xl"></i>
+        </a>
+        <a
+          href="https://github.com/younixue3"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="GitHub"
+          class="text-gray-400 hover:text-gray-200 transition-colors duration-300 hover:scale-110 transform"
+        >
+          <i class="fa-brands fa-github text-xl"></i>
+        </a>
+      </div>
+    </div>
+
+    <div class="mt-8 pt-8 border-t border-gray-800 text-center">
+      <p class="text-sm text-gray-400">
+        &copy; {new Date().getFullYear()} Ricko Caesar Aprilla Tiaka. Built with SvelteKit &amp; Tailwind CSS.
+      </p>
+    </div>
+  </div>
+</footer>

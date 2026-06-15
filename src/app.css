@@ -2,6 +2,39 @@
 @tailwind components;
 @tailwind utilities;
 
-html {
-    @apply scroll-smooth
+@layer base {
+  html {
+    @apply scroll-smooth;
+  }
+
+  body {
+    @apply antialiased text-gray-900 bg-gray-50;
+  }
+
+  ::selection {
+    @apply bg-indigo-500/20 text-indigo-900;
+  }
+}
+
+@layer components {
+  .section-heading {
+    @apply text-3xl font-bold text-gray-900 mb-12 relative;
+  }
+
+  .section-heading::after {
+    content: '';
+    @apply absolute -bottom-2 left-0 w-20 h-1 bg-gradient-to-r from-indigo-600 via-purple-500 to-pink-500 bg-[length:200%_100%] animate-gradient;
+  }
+
+  .card {
+    @apply bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-500 border border-gray-100;
+  }
+
+  .card-hover {
+    @apply transform hover:-translate-y-2;
+  }
+
+  .skill-tag {
+    @apply px-3 py-1.5 bg-gray-100 text-gray-700 rounded-full hover:bg-indigo-100 hover:text-indigo-700 transition-colors duration-300 cursor-default;
+  }
 }

@@ -1,518 +1,418 @@
 <script>
-    import logo from '$lib/asset/rmbg.png';
-    import cert1 from '$lib/asset/cert1.png';
-    import cert2 from '$lib/asset/cert2.png';
-    import cert3 from '$lib/asset/cert3.png';
-    import cert4 from '$lib/asset/cert4.png';
-    import cert5 from '$lib/asset/cert5.png';
-    import cert6 from '$lib/asset/cert6.png';
-    import cert7 from '$lib/asset/cert7.png';
-
-    import disperindagkop from '$lib/asset/disperindagkop.jpeg';
-    import esinta from '$lib/asset/esinta.jpeg';
-    import hbics from '$lib/asset/hbics.jpg';
-    import onedata from '$lib/asset/onedata.jpeg';
-    import panglima from '$lib/asset/panglima.jpeg';
-    import portal from '$lib/asset/portal.jpeg';
-    import sinazwa from '$lib/asset/sinazwa.jpeg';
-    import onjourney from '$lib/asset/onjourney.jpeg';
-
-    import { fade, fly, slide, scale } from 'svelte/transition';
-    import { spring } from 'svelte/motion';
-    import { onMount } from 'svelte';
+  import { onMount } from 'svelte';
+  import { browser } from '$app/environment';
   import PopUpImage from './Component/PopUpImage.svelte';
 
-    let mounted = false;
-    onMount(() => {
-        mounted = true;
+  import logo from '$lib/asset/rmbg.png';
+  import cert1 from '$lib/asset/cert1.png';
+  import cert2 from '$lib/asset/cert2.png';
+  import cert3 from '$lib/asset/cert3.png';
+  import cert4 from '$lib/asset/cert4.png';
+  import cert5 from '$lib/asset/cert5.png';
+  import cert6 from '$lib/asset/cert6.png';
+  import cert7 from '$lib/asset/cert7.png';
+  import disperindagkop from '$lib/asset/disperindagkop.jpeg';
+  import esinta from '$lib/asset/esinta.jpeg';
+  import hbics from '$lib/asset/hbics.jpg';
+  import onedata from '$lib/asset/onedata.jpeg';
+  import panglima from '$lib/asset/panglima.jpeg';
+  import portal from '$lib/asset/portal.jpeg';
+  import sinazwa from '$lib/asset/sinazwa.jpeg';
+  import onjourney from '$lib/asset/onjourney.jpeg';
+
+  let heroRef;
+  let expRef;
+  let skillRef;
+  let eduRef;
+  let projectRef;
+  let certRef;
+
+  onMount(async () => {
+    if (!browser) return;
+
+    const { gsap } = await import('gsap');
+    const { ScrollTrigger } = await import('gsap/ScrollTrigger');
+    gsap.registerPlugin(ScrollTrigger);
+
+    gsap.fromTo(heroRef,
+      { opacity: 0, y: 60 },
+      { opacity: 1, y: 0, duration: 1.2, ease: 'power3.out' }
+    );
+
+    [expRef, skillRef, eduRef, projectRef, certRef].forEach((ref) => {
+      if (!ref) return;
+      const cards = ref.querySelectorAll('.gsap-card');
+      if (!cards.length) return;
+      gsap.fromTo(cards,
+        { opacity: 0, y: 50 },
+        {
+          opacity: 1, y: 0, duration: 0.8, stagger: 0.15, ease: 'power2.out',
+          scrollTrigger: {
+            trigger: ref,
+            start: 'top 80%',
+            toggleActions: 'play none none none',
+          },
+        }
+      );
     });
+  });
 
-    // Spring animation for hover effects
-    const scaleSpring = spring(1, {
-        stiffness: 0.1,
-        damping: 0.2
-    });
+  const accentColors = [
+    'from-indigo-500 to-purple-500',
+    'from-emerald-500 to-teal-500',
+    'from-blue-500 to-cyan-500',
+    'from-orange-500 to-amber-500',
+    'from-rose-500 to-pink-500',
+    'from-violet-500 to-purple-500',
+    'from-sky-500 to-indigo-500',
+  ];
 
-    const experiences = [
-        {
-            title: "Full-Stack Developer",
-            company: "Keiko Julia",
-            period: "Oct 2025 - Present",
-            skills: ["Next.JS", "React Native", "Firebase", "Android", "iOS"]
-        },
-        {
-            title: "Software Engineer",
-            company: "Expertri",
-            period: "Apr 2025 - Sep 2025",
-            skills: ["Odoo ERP", "Python", "Tailwind CSS"]
-        },
-        {
-            title: "Junior Software Engineer",
-            company: "Expertri", 
-            period: "Jan 2025 - Apr 2025",
-            skills: ["Odoo ERP", "Python", "Tailwind CSS"]
-        },
-        {
-            title: "Frontend Developer",
-            company: "Panglima Propertindo",
-            period: "Jan 2024 - Apr 2025",
-            skills: ["Vue.js", "React", "TypeScript", "TailwindCSS"]
-        },
-        {
-            title: "Software Developer",
-            company: "Universitas Muhammadiyah Kalimantan Timur",
-            period: "Jun 2022 - Dec 2024",
-            skills: ["Python", "Django", "PostgreSQL", "Vue.js"]
-        },
-        {
-            title: "Full-stack Developer",
-            company: "Artron Indonesia",
-            period: "Jun 2023 - Jan 2024",
-            skills: ["React", "Node.js", "MongoDB", "Express"]
-        },
-        {
-            title: "Back-end Developer",
-            company: "On-Journey",
-            period: "Feb 2021 - Jan 2024",
-            skills: ["Go", "PostgreSQL", "Redis", "Docker"]
-        },
-        {
-            title: "Web Developer",
-            company: "Yayasan Tunas Cahaya Bangsa",
-            period: "Sep 2021 - Aug 2022",
-            skills: ["Vue.js", "Django", "PostgreSQL", "Git"]
-        },
-        {
-            title: "Web Developer",
-            company: "CV. Meja Belakang",
-            period: "Jan 2019 - Dec 2021",
-            skills: ["PHP", "MySQL", "JavaScript", "Bootstrap"]
-        },
-        {
-            title: "Back-end Developer",
-            company: "UtamaWeb",
-            period: "Nov 2020 - Jul 2021",
-            skills: ["PHP", "Laravel", "MySQL", "Redis"]
-        }
-    ];
+  const experiences = [
+    {
+      company: 'Keiko Julia Jewelry',
+      location: 'Singapore (Remote)',
+      roles: [
+        { title: 'Full-Stack Developer', period: 'Oct 2025 - Present', highlights: [
+          'Built official website with Next.js, React, Tailwind, Firebase; raised PageSpeed 49 to 81+ via WebP, caching, Core Web Vitals.',
+          'Implemented seasonal themes, dynamic SEO, cart system, Google-login RBAC, product-variant manager, Shopee-Express logistics, FCM.',
+          'Enhanced Android app stability; fixed NPM/TS issues, prepared Play & App Store pipelines.',
+          'Migrated Firebase to Vercel; restructured image & DB storage; added audit logs & secure de-activation.',
+          'Deployed email-blast system with template editor, SPF, SMTP migration; weekly campaigns drove measurable conversion lifts.',
+          'Tracked user behavior via Microsoft Clarity heatmaps; delivered monthly insight reports reducing UX friction.',
+          'Collaborated with Management & Marketing on roadmap, product execution, and secure handover protocols.',
+        ]},
+      ],
+    },
+    {
+      company: 'Expertri',
+      roles: [
+        { title: 'Software Engineer', period: 'Apr 2025 - Sep 2025', highlights: [
+          'Engineered custom Odoo ERP modules that streamlined business processes for clients.',
+          'Architected robust infrastructure reducing system downtime and improving response time.',
+        ]},
+        { title: 'Junior Software Engineer', period: 'Jan 2025 - Apr 2025', highlights: [
+          'Implemented Python integration scripts automating data sync, reducing manual data entry by 75%.',
+          'Optimized Odoo ERP modules accelerating reporting by 35%, enabling real-time BI.',
+        ]},
+      ],
+    },
+    {
+      company: 'Panglima Propertindo',
+      roles: [
+        { title: 'Frontend Developer', period: 'Jan 2024 - Apr 2025', highlights: [
+          'Engineered responsive interfaces with Next.js and React, increasing engagement and reducing bounce rates.',
+          'Implemented ShadCN UI components accelerating development cycles.',
+          'Conducted 15+ on-site workflow inspections; optimizations significantly increased field productivity.',
+          'Designed training programs for field officers, reducing support tickets within 3 months.',
+          'Created data-driven reports guiding strategic improvements, increasing system adoption rates.',
+          'Established API integration protocols with backend teams reducing bottlenecks.',
+        ]},
+      ],
+    },
+    {
+      company: 'Universitas Muhammadiyah Kalimantan Timur',
+      roles: [
+        { title: 'Software Developer', period: 'Jun 2022 - Dec 2024', highlights: [
+          'Spearheaded university applications digitizing administrative processes.',
+          'Implemented TypeScript across projects decreasing bugs and improving maintainability.',
+        ]},
+        { title: 'Software Developer (Freelance)', period: 'Jul 2020 - Jun 2022', highlights: [
+          'Full-Stack Development with Vue.js, TailwindCSS, and Django.',
+          'Developed "D3 Tracer Study" application system.',
+        ]},
+      ],
+    },
+    {
+      company: 'On-Journey.id',
+      roles: [
+        { title: 'Back-end Developer', period: 'Feb 2021 - Jan 2024', highlights: [
+          'Architected scalable backend systems supporting substantial user growth.',
+          'Optimized database queries reducing server load and cutting API response times.',
+        ]},
+      ],
+    },
+    {
+      company: 'Yayasan Tunas Cahaya Bangsa',
+      roles: [
+        { title: 'Web Developer', period: 'Sep 2021 - Jul 2023', highlights: [
+          'Built web applications with Vue.js, Laravel, Flutter, TailwindCSS, and Django REST Framework.',
+        ]},
+      ],
+    },
+  ];
 
-    const education = [
-        {
-            school: "Universitas Muhammadiyah Kalimantan Timur",
-            degree: "S1 Teknik Informatika",
-            period: "Sep 2020 - Present"
-        },
-        {
-            school: "SMK Negeri 7 Samarinda",
-            degree: "Computer Software Engineering",
-            period: "Sep 2016 - 2019"
-        }
-    ];
+  const education = [
+    { school: 'Universitas Muhammadiyah Kalimantan Timur', degree: 'S1 Teknik Informatika', period: 'Sep 2020 - Present', icon: 'fa-graduation-cap' },
+    { school: 'SMK Negeri 7 Samarinda', degree: 'Computer Software Engineering', period: 'Sep 2016 - 2019', icon: 'fa-school' },
+  ];
 
-    const projects = [
-        {
-            name: "XYStudio.id",
-            company: "XYStudio", 
-            url: "https://xystudio.id/",
-            description: "Modern and responsive company profile website showcasing creative agency services and portfolio",
-            stack: [
-                { name: "Astro.js" },
-                { name: "Tailwind" },
-                { name: "Golang" }
-            ],
-            features: [
-                "Dynamic Portfolio Gallery",
-                "Service Showcase", 
-                "Blog Integration",
-                "Contact Management"
-            ],
-            status: "Production",
-            year: "2023-Present"
-        },
-        {
-            name: "Si-Penggaji",
-            company: "Internal Project",
-            url: "https://si-penggaji.com/",
-            description: "Comprehensive payroll management system for small to medium businesses",
-            stack: [
-                { name: "Django" },
-                { name: "Tailwind" }
-            ],
-            features: [
-                "Salary Calculation",
-                "Employee Management",
-                "Attendance Tracking",
-                "Payslip Generation"
-            ],
-            status: "Production",
-            year: "2023-Present"
-        }
-    ];
+  const portfolio = [
+    { title: 'SI-Penggaji', subtitle: 'Payroll System', period: 'Jan 2025 - Present', desc: 'Comprehensive payroll system reducing processing time and eliminating manual errors. Centralized employee management, automated attendance, leave requests, and digital payslip generation.', image: onedata, link: 'https://si-penggaji.com/', tech: ['Django', 'Tailwind CSS', 'PostgreSQL'] },
+    { title: 'Disperindagkop', subtitle: 'Information System', period: 'Sep 2024 - Present', desc: 'Data-driven system for North Kalimantan\'s Department of Industry consolidating SME data across 5 districts with analytics dashboards.', image: disperindagkop, link: 'https://disperindagkop.tiaka.web.id/', tech: ['Laravel', 'React.js', 'OpenLayers', 'ShadCN UI', 'TypeScript'] },
+    { title: 'SI-Nazwa', subtitle: 'Bakery Management', period: 'Apr 2024 - Present', desc: 'Mobile-first bakery solution integrating inventory, production, delivery tracking, and POS with real-time sync.', image: sinazwa, link: 'https://pia-nazwa-smd.shop/', tech: ['Next.js', 'Laravel', 'React.js', 'Tailwind CSS'] },
+    { title: 'Satu Data Mahulu', subtitle: 'Open Data Platform', period: 'Feb 2023 - Present', desc: 'Unified data platform consolidating information from 12 government departments with API integrations.', image: onedata, link: 'https://data.mahakamulukab.go.id/', tech: ['CKAN', 'Django', 'Python', 'PostgreSQL', 'Docker'] },
+    { title: 'Check In/Out App', subtitle: 'Employee Tracking', period: 'Dec 2021 - Jun 2023', desc: 'Mobile solution eliminating paper-based employee tracking with Google Maps location verification.', image: onjourney, link: '#', tech: ['Vue Native', 'Django', 'Django REST Framework', 'Google Maps API'] },
+    { title: 'e-SINTA', subtitle: 'Data Analysis Platform', period: 'Oct 2023 - Nov 2023', desc: 'Analysis platform identifying high-risk areas for poverty interventions. Improved resource allocation by 50%.', image: esinta, link: '#', tech: ['Laravel'] },
+    { title: 'Panglima Propertindo', subtitle: 'Property Website', period: '2024', desc: 'Sharia-compliant property developer website with responsive design.', image: panglima, link: 'https://panglimapropertindo.id/', tech: ['Next.js', 'React.js', 'Laravel', 'Tailwind CSS'] },
+    { title: 'Portal Wisata Pampang', subtitle: 'Cultural Tourism', period: '2023', desc: 'Digital platform for Desa Budaya Pampang featuring event calendars and traditional ceremonies.', image: portal, link: '#', tech: ['Laravel', 'Inertia.js', 'React.js', 'TypeScript'] },
+    { title: 'On-Journey', subtitle: 'Travel Platform', period: '2021 - 2024', desc: 'Travel platform connecting travelers with agents for Indonesian destinations.', image: onjourney, link: 'https://onjourney.id', tech: ['Nuxt.js', 'Django', 'Firebase', 'Tailwind CSS'] },
+    { title: 'HBICS Website', subtitle: 'School System', period: '2022 - 2023', desc: 'Student information system for academic guidance and achievements tracking with live chat.', image: hbics, link: 'https://highschool.hbics.sch.id/', tech: ['React.js', 'Vue.js', 'Django', 'TypeScript', 'Socket.io'] },
+  ];
 
-    const portfolio = [
-        {
-            title: "Satu Data Mahulu",
-            description: "Public data management platform for Mahakam Ulu Regency, built with CKAN for centralized data integration across various sectors.",
-            image: onedata,
-            link: "https://data.mahakamulukab.go.id/",
-            technologies: ["CKAN", "Django", "Python", "PostgreSQL", "Docker"]
-        },
-        {
-            title: "SI-NAZWA",
-            description: "A comprehensive mobile web application for bakery businesses, providing integrated solutions from inventory to sales management. Features include inventory tracking, production planning, outlet management, POS system, and analytics dashboard.",
-            image: sinazwa,
-            link: "https://pia-nazwa-smd.shop/",
-            technologies: ["Laravel", "React.js", "Next.js", "Tailwind CSS"]
-        },
-        {
-            title: "Panglima Propertindo",
-            description: "Panglima Propertindo is the official website of a Sharia-compliant property developer based in Samarinda, East Kalimantan, committed to providing halal housing and fostering an Islamic living environment. The site showcases the company’s vision, mission, core values, featured property projects, and career opportunities. I contributed as a Frontend Developer, playing a key role in designing and implementing a responsive and user-friendly interface that enhances the user experience and effectively communicates the company’s offerings and values to its audience.",
-            image: panglima,
-            link: "https://panglimapropertindo.id/",
-            technologies: ["Laravel", "React.js", "Next.js", "Tailwind CSS"]
-        },
-        {
-            title: "Disperindagkop Portal",
-            description: "Information system for North Kalimantan's Department of Industry, Trade, Cooperatives and SMEs. Integrates with 'One Data UMKM' initiative for consolidated SME data management and analysis.",
-            image: disperindagkop,
-            link: "https://disperindagkop.tiaka.web.id/",
-            technologies: ["Laravel", "React.js", "OpenLayers", "TypeScript", "Tailwind CSS"]
-        },
-        {
-            title: "Portal Wisata Desa Budaya Pampang",
-            description: "Digital platform showcasing cultural heritage of Desa Budaya Pampang, featuring event calendars, traditional ceremonies, and local activities information.",
-            image: portal,
-            link: "#",
-            technologies: ["Laravel", "Inertia.js", "React.js", "TypeScript"]
-        },
-        {
-            title: "On-Journey",
-            description: "Travel platform connecting travelers with agents to explore Indonesian destinations. Features tour packages, travel partner integration, and booking management.",
-            image: onjourney,
-            link: "https://onjourney.id",
-            technologies: ["Nuxt.js", "Django", "Firebase", "Tailwind CSS"]
-        },
-        {
-            title: "Harapan Bangsa Integrated School Website",
-            description: "Student information system for UMKT supporting academic guidance, scholarship applications, and student achievements tracking with live chat features.",
-            image: hbics,
-            link: "https://highschool.hbics.sch.id/",
-            technologies: ["React.js", "Vue.js", "Django", "TypeScript", "Socket.io"]
-        }
-    ];
+  const certifications = [
+    { name: 'MongoDB for SQL Experts', issuer: 'MongoDB', date: 'Oct 2024', id: 'MDBdnkb38ow01', link: 'https://learn.mongodb.com/c/rij3JDAdTVuTzmeeKBeuqA', photo: cert7 },
+    { name: 'Belajar JavaScript Async', issuer: 'CODEPOLITAN', date: 'Jan 2024', id: 'SQIYH2L', link: 'https://codepolitan.com/c/SQIYH2L', photo: cert6 },
+    { name: 'Kelas Belajar Docker untuk Pemula', issuer: 'CODEPOLITAN', date: 'Jan 2024', id: 'VZKGPK7', link: 'https://codepolitan.com/c/VZKGPK7', photo: cert5 },
+    { name: 'Setting Up Server dgn Alibaba Cloud', issuer: 'CODEPOLITAN', date: 'Jan 2024', id: 'RYAPJAO', link: 'https://codepolitan.com/c/RYAPJAO', photo: cert4 },
+    { name: 'UI Styleguide with Figma', issuer: 'BuildWithAngga', date: 'Jan 2024', id: '6B6sP2ZKH7', link: null, photo: cert3 },
+    { name: 'AWS Technical Essentials', issuer: 'Orbit Future Academy', date: 'Sep 2023', id: 'ORBITFA6524e0556f7c0', link: 'https://erp.orbitfutureacademy.com/pub/certificate/verification/ORBITFA6524e0556f7c0', photo: cert2 },
+    { name: 'Architecting on AWS', issuer: 'Orbit Future Academy', date: 'Sep 2023', id: 'ORBITFA6524f221dea0', link: 'https://erp.orbitfutureacademy.com/pub/certificate/verification/ORBITFA6524f221dea09', photo: cert1 },
+  ];
 
-    const certifications = [
-        {
-            name: "MongoDB for SQL Experts",
-            issuer: "MongoDB",
-            date: "Oct 2024",
-            credentialId: "MDBdnkb38ow01",
-            link: "https://learn.mongodb.com/c/rij3JDAdTVuTzmeeKBeuqA",
-            photo: cert7
-        },
-        {
-            name: "Belajar JavaScript Async",
-            issuer: "CODEPOLITAN",
-            date: "Jan 2024",
-            credentialId: "SQIYH2L",
-            link: "https://codepolitan.com/c/SQIYH2L",
-            photo: cert6
-        },
-        {
-            name: "Kelas Belajar Docker untuk Pemula",
-            issuer: "CODEPOLITAN",
-            date: "Jan 2024",
-            credentialId: "VZKGPK7",
-            link: "https://codepolitan.com/c/VZKGPK7",
-            photo: cert5
-        },
-        {
-            name: "Setting Up Server dengan Alibaba Cloud ECS",
-            issuer: "CODEPOLITAN",
-            date: "Jan 2024",
-            credentialId: "RYAPJAO",
-            link: "https://codepolitan.com/c/RYAPJAO",
-            photo: cert4
-        },
-        {
-            name: "UI Styleguide with Figma",
-            issuer: "BuildWithAngga",
-            date: "Jan 2024",
-            credentialId: "6B6sP2ZKH7",
-            link: null,
-            photo: cert3
-        },
-        {
-            name: "AWS Technical Essentials",
-            issuer: "Orbit Future Academy",
-            date: "Sep 2023",
-            credentialId: "ORBITFA6524e0556f7c0",
-            link: "https://erp.orbitfutureacademy.com/pub/certificate/verification/ORBITFA6524e0556f7c0",
-            photo: cert2
-        },
-        {
-            name: "Architecting on AWS",
-            issuer: "Orbit Future Academy",
-            date: "Sep 2023",
-            credentialId: "ORBITFA6524f221dea0",
-            link: "https://erp.orbitfutureacademy.com/pub/certificate/verification/ORBITFA6524f221dea09",
-            photo: cert1
-        }
-    ];
+  const skillCategories = [
+    { name: 'Frontend Development', icon: 'fa-desktop', skills: ['React.js', 'Next.js', 'Vue.js', 'Svelte', 'TailwindCSS', 'Responsive Design', 'UI/UX Implementation'] },
+    { name: 'Backend Development', icon: 'fa-server', skills: ['Python', 'Django', 'Django REST Framework', 'PHP', 'Laravel', 'Database Optimization', 'Microservices'] },
+    { name: 'DevOps & Workflow', icon: 'fa-cogs', skills: ['Git', 'Docker', 'API Integration', 'Agile/Scrum', 'Test Driven Development'] },
+  ];
 </script>
 
 <svelte:head>
-    <title>Ricko Tiaka | Full Stack Developer</title>
-    <meta name="description" content="Portfolio of Ricko Tiaka - Full Stack Developer with expertise in Vue.js, Django, and more" />
+  <title>Ricko Tiaka | Frontend & Full-Stack Developer</title>
+  <meta name="description" content="Portfolio of Ricko Caesar Aprilla Tiaka - Frontend & Full-Stack Developer" />
 </svelte:head>
 
-<main class="min-h-screen bg-gray-50">
-    <!-- Hero Section -->
-    <section class="overflow-hidden mx-auto">
-        {#if mounted}
-        <div class="mx-auto" in:fade|local={{duration: 1000, delay: 200}}>
-            <div class="bg-gradient-to-b from-gray-100 to-gray-200 transform transition-all duration-500 backdrop-blur-lg">
-                <div class="relative flex flex-col lg:flex-row min-h-[700px] px-4 lg:px-0">
-                    <div class="w-full lg:w-1/3 flex relative lg:ml-72 mt-8 lg:mt-0">
-                        <div class="group z-0 hover:z-10 w-48 mx-auto lg:w-full">
-                            <img 
-                                src={logo} 
-                                alt="Ricko Tiaka" 
-                                class="w-full h-full object-cover transform md:group-hover:scale-150 transition-transform duration-700 brightness-110"
-                                loading="eager"
-                                decoding="async"
-                            >
-                            
-                            <div class="hidden md:block absolute inset-0 backdrop-blur-sm group-hover:backdrop-blur-0 transition-all ease-in-out"></div>
-                        </div>
-                    </div>
-                    
-                    <div class="relative lg:absolute transform hover:scale-110 z-0 hover:z-10 flex px-4 lg:left-1/2 lg:top-1/3 transition-all ease-in-out duration-500 w-full lg:w-auto">
-                        <div class="bg-white/95 backdrop-blur-lg p-6 lg:p-12 w-full lg:w-[32rem] rounded-3xl shadow-2xl hover:shadow-indigo-100/50 transform hover:scale-[1.02] transition-all duration-700" 
-                             in:fly|local={{x: 50, duration: 1500, delay: 700}}>
-                            <h1 class="text-4xl lg:text-6xl font-bold text-gray-900 mb-6 lg:mb-8 tracking-tighter">
-                                Hi, I'm <span class="group text-indigo-600 hover:text-indigo-700 transition-colors duration-500 relative inline-block">
-                                    Ricko Tiaka
-                                    <span class="absolute -bottom-1 left-0 w-full h-0.5 bg-indigo-600 transform scale-x-0 transition-transform duration-500 origin-left group-hover:scale-x-100"></span>
-                                </span>
-                            </h1>
-                            
-                            <p class="text-sm text-gray-700 mb-10 leading-relaxed font-light tracking-wide" in:slide|local={{duration: 1000, delay: 900}}>
-                                A seasoned Frontend Developer with 4 years of experience specializing in crafting exceptional web experiences. My expertise spans across startups, travel industry, and enterprise solutions for both private and government sectors. I transform complex requirements into intuitive, user-friendly interfaces that drive engagement and operational efficiency.
-                            </p>
-                            
-                            <div class="flex flex-wrap justify-center sm:justify-start gap-3 sm:gap-5" in:scale|local={{duration: 700, delay: 1100}} role="list" aria-label="Technical skills">
-                                <div class="group relative overflow-hidden bg-green-200 px-4 sm:px-5 py-2 sm:py-2.5 rounded-xl sm:rounded-2xl transform hover:scale-105 sm:hover:scale-110 transition-all duration-500 hover:shadow-lg hover:shadow-green-100/50 cursor-pointer w-full sm:w-auto"
-                                    role="listitem">
-                                    <div class="absolute inset-0 bg-green-300 transform scale-x-0 transition-transform origin-left group-hover:scale-x-100 ease-out duration-500"></div>
-                                    <span class="relative z-10 text-green-800 text-xs sm:text-sm font-medium group-hover:font-semibold flex items-center justify-center sm:justify-start">
-                                        <i class="fab fa-python mr-2 sm:mr-2.5 transition-transform group-hover:rotate-12 duration-500" aria-hidden="true"></i>
-                                        Django
-                                    </span>
-                                </div>
-
-                                <div class="group relative overflow-hidden bg-blue-200 px-4 sm:px-5 py-2 sm:py-2.5 rounded-xl sm:rounded-2xl transform hover:scale-105 sm:hover:scale-110 transition-all duration-500 hover:shadow-lg hover:shadow-blue-100/50 cursor-pointer w-full sm:w-auto"
-                                    role="listitem">
-                                    <div class="absolute inset-0 bg-blue-300 transform scale-x-0 transition-transform origin-left group-hover:scale-x-100 ease-out duration-500"></div>
-                                    <span class="relative z-10 text-blue-800 text-xs sm:text-sm font-medium group-hover:font-semibold flex items-center justify-center sm:justify-start">
-                                        <i class="fab fa-react mr-2 sm:mr-2.5 transition-transform group-hover:rotate-12 duration-500" aria-hidden="true"></i>
-                                        React
-                                    </span>
-                                </div>
-
-                                <div class="group relative overflow-hidden bg-red-200 px-4 sm:px-5 py-2 sm:py-2.5 rounded-xl sm:rounded-2xl transform hover:scale-105 sm:hover:scale-110 transition-all duration-500 hover:shadow-lg hover:shadow-red-100/50 cursor-pointer w-full sm:w-auto"
-                                    role="listitem">
-                                    <div class="absolute inset-0 bg-red-300 transform scale-x-0 transition-transform origin-left group-hover:scale-x-100 ease-out duration-500"></div>
-                                    <span class="relative z-10 text-red-800 text-xs sm:text-sm font-medium group-hover:font-semibold flex items-center justify-center sm:justify-start">
-                                        <i class="fab fa-laravel mr-2 sm:mr-2.5 transition-transform group-hover:rotate-12 duration-500" aria-hidden="true"></i>
-                                        Laravel
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+<!-- Hero -->
+<section id="about" class="relative overflow-hidden bg-gradient-to-b from-gray-50 to-white" bind:this={heroRef}>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-20">
+    <div class="flex flex-col lg:flex-row items-start gap-10 lg:gap-16">
+      <div class="w-full lg:w-80 flex-shrink-0 mx-auto lg:mx-0">
+        <div class="relative group">
+          <div class="absolute -inset-1 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 rounded-2xl blur-xl opacity-50 group-hover:opacity-75 transition-opacity duration-500"></div>
+          <img src={logo} alt="Ricko Tiaka" class="relative rounded-2xl w-full h-auto transform group-hover:scale-[1.02] transition-transform duration-700" loading="eager" />
         </div>
-        {/if}
-    </section>
+      </div>
 
-    <!-- Experience & Education Section -->
-    <section class="container mx-auto px-4 py-16 bg-gray-50">
-        {#if mounted}
-        <div class="max-w-6xl mx-auto grid md:grid-cols-3 gap-8" in:fade|local={{duration: 1000, delay: 300}}>
-            <!-- Experience -->
-            <div class="md:col-span-2 space-y-6">
-                <h2 class="text-3xl font-bold text-gray-900 mb-8 relative group" in:slide|local={{duration: 800}}>
-                    Experience
-                    <span class="absolute -bottom-2 left-0 w-20 h-1 bg-gradient-to-r from-indigo-600 via-purple-500 to-pink-500 bg-[length:200%_100%] animate-gradient transform origin-left transition-transform duration-300 group-hover:scale-x-150"></span>
-                </h2>
-                {#each experiences as exp, i}
-                    <div class="bg-white rounded-xl p-6 shadow-md hover:shadow-xl transition-all duration-500 transform hover:-translate-y-2 border border-gray-100 group relative overflow-hidden"
-                         in:fly|local={{y: 50, duration: 1000, delay: 400 * i}}>
-                        <div class="absolute inset-0 bg-gradient-to-r from-indigo-500/10 via-purple-500/10 to-pink-500/10 translate-x-[-100%] group-hover:translate-x-[100%] blur-lg transition-transform duration-1000"></div>
-                        <div class="relative z-10">
-                            <div class="flex justify-between items-start">
-                                <div>
-                                    <h3 class="text-xl font-semibold text-gray-900 hover:text-indigo-600 transition-colors duration-300">{exp.title}</h3>
-                                    <p class="text-indigo-600 font-medium hover:text-indigo-800 transition-colors duration-300">{exp.company}</p>
-                                </div>
-                                <span class="text-gray-500 text-sm font-medium bg-gray-50 px-3 py-1 rounded-full">{exp.period}</span>
-                            </div>
-                            <div class="mt-4">
-                                <h4 class="font-medium text-gray-700 mb-2 flex items-center">
-                                    <i class="fas fa-code-branch mr-2 text-indigo-500"></i>
-                                    Key Skills
-                                </h4>
-                                <div class="flex flex-wrap gap-2">
-                                    {#each exp.skills as skill, j}
-                                        <span class="bg-gray-100 px-4 py-1.5 rounded-full text-sm text-gray-700 hover:bg-gradient-to-r hover:from-indigo-100 hover:to-purple-100 hover:text-indigo-700 transition-all duration-300 transform hover:scale-105 cursor-default"
-                                              in:scale|local={{duration: 400, delay: 200 * j}}>
-                                            {skill}
-                                        </span>
-                                    {/each}
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                {/each}
+      <div class="flex-1 text-center lg:text-left">
+        <p class="text-indigo-600 font-semibold tracking-widest uppercase text-xs mb-3">Frontend & Full-Stack Developer</p>
+        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 mb-4 tracking-tight leading-tight">
+          Hi, I'm <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 via-purple-500 to-pink-500">Ricko Tiaka</span>
+        </h1>
+
+        <div class="flex flex-wrap justify-center lg:justify-start gap-x-5 gap-y-2 text-sm text-gray-500 mb-6">
+          <span class="inline-flex items-center gap-2"><i class="fas fa-envelope text-indigo-400 w-4"></i>bussiness.needs.rctka@gmail.com</span>
+          <span class="inline-flex items-center gap-2"><i class="fas fa-globe text-indigo-400 w-4"></i>itsmericko.vercel.app</span>
+          <span class="inline-flex items-center gap-2"><i class="fab fa-linkedin text-indigo-400 w-4"></i>linkedin.com/in/ricko-caesar-aprilla-tiaka</span>
+          <span class="inline-flex items-center gap-2"><i class="fas fa-map-marker-alt text-indigo-400 w-4"></i>Samarinda, Indonesia</span>
+        </div>
+
+        <p class="text-base text-gray-600 leading-relaxed mb-8 max-w-3xl mx-auto lg:mx-0">
+          Results-driven Full-Stack Developer with 5+ years of experience delivering high-impact web applications and enterprise systems. Expert in React, Vue.js, and Django with strong focus on scalable architecture and performance optimization across government, education, and private sectors.
+        </p>
+
+        <div class="flex flex-wrap justify-center lg:justify-start gap-3">
+          <a href="#projects" class="group inline-flex items-center gap-2 bg-gradient-to-r from-indigo-600 to-purple-600 text-white px-6 py-3 rounded-full font-medium hover:from-indigo-700 hover:to-purple-700 transition-all duration-300 shadow-lg shadow-indigo-200 hover:shadow-xl">
+            View Projects <i class="fas fa-arrow-right text-sm transition-transform group-hover:translate-x-1"></i>
+          </a>
+          <a href="#experience" class="inline-flex items-center gap-2 bg-white text-gray-700 px-6 py-3 rounded-full font-medium border border-gray-200 hover:border-indigo-200 hover:text-indigo-600 hover:bg-indigo-50 transition-all duration-300 shadow-sm">
+            Experience <i class="fas fa-briefcase text-sm"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Experience -->
+<section id="experience" class="py-16 lg:py-24 bg-gray-50">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-16">
+      <p class="text-indigo-600 font-semibold tracking-widest uppercase text-xs mb-3">Professional Experience</p>
+      <h2 class="text-4xl sm:text-5xl font-bold text-gray-900">Career Path</h2>
+      <p class="text-gray-500 mt-3 max-w-xl mx-auto">5+ years of delivering impact across industries</p>
+    </div>
+
+    <div class="max-w-4xl mx-auto space-y-6" bind:this={expRef}>
+      {#each experiences as group, gi}
+        {@const color = accentColors[gi % accentColors.length]}
+        <div class="gsap-card group relative bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 border border-gray-100 hover:-translate-y-1 overflow-hidden">
+          <div class="absolute left-0 top-0 bottom-0 w-1.5 bg-gradient-to-b {color}"></div>
+          <div class="p-6 lg:p-8">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-5">
+              <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-br {color} flex items-center justify-center text-white text-sm shadow-md shrink-0">
+                  <i class="fas fa-building"></i>
+                </div>
+                <h3 class="text-xl font-bold text-gray-900 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r {color} transition-all duration-300">{group.company}</h3>
+              </div>
+              {#if group.location}
+                <span class="text-xs text-gray-400 flex items-center gap-1.5"><i class="fas fa-map-marker-alt"></i>{group.location}</span>
+              {/if}
             </div>
 
-            <!-- Education -->
-            <div>
-                <h2 class="text-3xl font-bold text-gray-900 mb-8 relative group" in:slide|local={{duration: 800}}>
-                    Education
-                    <span class="absolute -bottom-2 left-0 w-20 h-1 bg-gradient-to-r from-indigo-600 via-purple-500 to-pink-500 bg-[length:200%_100%] animate-gradient transform origin-left transition-transform duration-300 group-hover:scale-x-150"></span>
-                </h2>
-                <div class="space-y-6">
-                    {#each education as edu, i}
-                        <div class="bg-white rounded-xl p-6 shadow-md hover:shadow-xl transition-all duration-500 transform hover:-translate-y-2 border border-gray-100 group relative overflow-hidden"
-                             in:fly|local={{y: 50, duration: 1000, delay: 400 * i}}>
-                            <div class="absolute inset-0 bg-gradient-to-r from-indigo-500/10 via-purple-500/10 to-pink-500/10 translate-x-[-100%] blur-lg group-hover:translate-x-[100%] transition-transform duration-1000"></div>
-                            <div class="relative z-10">
-                                <h3 class="text-xl font-semibold text-gray-900 hover:text-indigo-600 transition-colors duration-300">{edu.school}</h3>
-                                <p class="text-indigo-600 hover:text-indigo-800 transition-colors duration-300 font-medium mt-1">{edu.degree}</p>
-                                <p class="text-gray-500 text-sm mt-2 bg-gray-50 inline-block px-3 py-1 rounded-full">{edu.period}</p>
-                            </div>
-                        </div>
+            <div class="space-y-4">
+              {#each group.roles as role, ri}
+                <div class="pl-4 border-l-2 border-gray-200">
+                  <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1 mb-2">
+                    <h4 class="text-base font-semibold text-gray-800">{role.title}</h4>
+                    <span class="shrink-0 text-xs font-medium text-gray-500 bg-gray-100 px-3 py-1 rounded-full">{role.period}</span>
+                  </div>
+                  <ul class="space-y-1.5">
+                    {#each role.highlights as point}
+                      <li class="text-sm text-gray-600 leading-relaxed flex items-start gap-2">
+                        <i class="fas fa-circle text-[4px] text-indigo-400 mt-1.5 shrink-0"></i>
+                        <span>{point}</span>
+                      </li>
                     {/each}
+                  </ul>
                 </div>
+              {/each}
             </div>
+          </div>
         </div>
-        {/if}
+      {/each}
+    </div>
+  </div>
+</section>
 
-        <style>
-            @keyframes gradient {
-                0% { background-position: 0% 50%; }
-                100% { background-position: 100% 50%; }
-            }
-            .animate-gradient {
-                animation: gradient 3s linear infinite;
-            }
-        </style>
-    </section>
+<!-- Skills -->
+<section id="skills" class="py-16 lg:py-24 bg-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-16">
+      <p class="text-indigo-600 font-semibold tracking-widest uppercase text-xs mb-3">Expertise</p>
+      <h2 class="text-4xl sm:text-5xl font-bold text-gray-900">Technical Skills</h2>
+      <p class="text-gray-500 mt-3 max-w-xl mx-auto">Core competencies across the full development stack</p>
+    </div>
 
-    <!-- Portfolio Section -->
-    <section class="container mx-auto px-4 py-16 bg-gray-50">
-        {#if mounted}
-        <div class="max-w-6xl mx-auto" in:fade|local={{duration: 1000}}>
-            <h2 class="text-3xl font-bold text-gray-900 mb-12 relative group" in:slide|local={{duration: 800}}>
-                Portfolio
-                <span class="absolute -bottom-2 left-0 w-20 h-1 bg-gradient-to-r from-indigo-600 via-purple-500 to-pink-500 bg-[length:200%_100%] animate-gradient transform origin-left transition-transform duration-300 group-hover:scale-x-150"></span>
-            </h2>
-            <div class="grid md:grid-cols-2 gap-8">
-                {#each portfolio as item, i}
-                    <div class="group bg-white rounded-xl shadow-lg overflow-hidden transform hover:scale-[1.02] transition-all duration-500 hover:shadow-2xl border border-gray-100 relative"
-                         in:fly|local={{y: 50, duration: 1000, delay: 300 * i}}>
-                        <div class="absolute inset-0 bg-gradient-to-r from-indigo-500/10 via-purple-500/10 to-pink-500/10 translate-x-[-100%] group-hover:translate-x-[100%] blur-lg transition-transform duration-1000"></div>
-                        <div class="relative">
-                            <div class="overflow-hidden h-48 bg-gray-100">
-                                <img src={item.image || 'https://via.placeholder.com/600x400?text=Project+Preview'} 
-                                     alt={item.title} 
-                                     class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
-                                     loading="lazy"
-                                     decoding="async">
-                            </div>
-                            <div class="p-8 relative">
-                                <h3 class="text-xl font-semibold text-gray-900 group-hover:text-indigo-600 transition-colors duration-300">{item.title}</h3>
-                                <p class="text-gray-600 mt-3 leading-relaxed line-clamp-3">{item.description}</p>
-                                <div class="mt-6 space-y-4">
-                                    <div class="flex flex-wrap gap-2">
-                                        {#each item.technologies || [] as tech}
-                                            <span class="px-3 py-1.5 text-sm bg-gray-100 text-gray-700 rounded-full hover:bg-indigo-100 hover:text-indigo-700 transition-colors duration-300 cursor-default">{tech}</span>
-                                        {/each}
-                                    </div>
-                                    <div class="flex justify-end">
-                                        <a href={item.link} 
-                                           target="_blank" 
-                                           rel="noopener noreferrer" 
-                                           class="inline-flex items-center gap-2 text-indigo-600 hover:text-indigo-800 font-medium transition-all duration-300 group-hover:gap-3 hover:underline">
-                                            <span>View Project</span>
-                                            <i class="fas fa-arrow-right transition-transform group-hover:translate-x-1"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                {/each}
+    <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto" bind:this={skillRef}>
+      {#each skillCategories as cat, i}
+        {@const color = accentColors[i]}
+        <div class="gsap-card group relative bg-gradient-to-br from-gray-50 to-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 border border-gray-100 hover:-translate-y-2 overflow-hidden">
+          <div class="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br {color} opacity-[0.04] rounded-bl-[4rem] transition-all duration-500 group-hover:opacity-[0.08] group-hover:scale-150"></div>
+          <div class="relative z-10">
+            <div class="w-14 h-14 rounded-2xl bg-gradient-to-br {color} flex items-center justify-center text-white text-xl shadow-lg mb-6 group-hover:scale-110 group-hover:rotate-3 transition-all duration-500">
+              <i class="fas {cat.icon}"></i>
             </div>
-        </div>
-        {/if}
-    </section>
-
-    <!-- Certifications Section -->
-    <section class="container mx-auto px-4 py-16 bg-gray-50">
-        {#if mounted}
-        <div class="max-w-6xl mx-auto" in:fade|local={{duration: 1000}}>
-            <h2 class="text-3xl font-bold text-gray-900 mb-12 relative group" in:slide|local={{duration: 800}}>
-                Certifications
-                <span class="absolute -bottom-2 left-0 w-20 h-1 bg-gradient-to-r from-indigo-600 via-purple-500 to-pink-500 bg-[length:200%_100%] animate-gradient transform origin-left transition-transform duration-300 group-hover:scale-x-150"></span>
-            </h2>
-            <div class="grid md:grid-cols-2 gap-8">
-                {#each certifications as cert, i}
-                <PopUpImage imageSrc={cert.photo} altText={cert.name}>
-                    <div class="bg-white rounded-xl h-full shadow-md hover:shadow-xl transition-all duration-500 p-6 transform hover:-translate-y-2 border border-gray-100 group relative overflow-hidden"
-                         in:fly|local={{y: 50, duration: 1000, delay: 300 * i}}>
-                        <div class="absolute inset-0 bg-gradient-to-r from-indigo-500/10 via-purple-500/10 to-pink-500/10 translate-x-[-100%] group-hover:translate-x-[100%] blur-lg transition-transform duration-1000"></div>
-                        <div class="relative z-10">
-                            <h3 class="text-xl font-semibold text-gray-900 hover:text-indigo-600 transition-colors duration-300">{cert.name}</h3>
-                            <p class="text-indigo-600 mt-2 font-medium hover:text-indigo-800 transition-colors duration-300">{cert.issuer}</p>
-                            <div class="mt-3 space-y-1.5">
-                                <p class="text-gray-500 text-sm bg-gray-50 inline-block px-3 py-1 rounded-full">
-                                    <i class="far fa-calendar-alt mr-2"></i>
-                                    Issued: {cert.date}
-                                </p>
-                                <p class="text-gray-500 text-sm bg-gray-50 inline-block px-3 py-1 rounded-full">
-                                    <i class="fas fa-fingerprint mr-2"></i>
-                                    ID: {cert.credentialId}
-                                </p>
-                            </div>
-                            {#if cert.link}
-                                <a href={cert.link} 
-                                   target="_blank" 
-                                   rel="noopener noreferrer" 
-                                   class="inline-flex items-center mt-4 text-indigo-600 hover:text-indigo-800 font-medium transition-all duration-300 group">
-                                    <span>Verify Certificate</span>
-                                    <i class="fas fa-external-link-alt ml-2 transform group-hover:translate-x-1 transition-transform duration-300"></i>
-                                </a>
-                            {/if}
-                        </div>
-                    </div>
-                </PopUpImage>
-                {/each}
+            <h3 class="text-lg font-bold text-gray-900 mb-4 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r {color} transition-all duration-300">{cat.name}</h3>
+            <div class="flex flex-wrap gap-2">
+              {#each cat.skills as skill}
+                <span class="px-3 py-1.5 text-xs font-medium rounded-lg bg-gray-100 text-gray-600
+                  group-hover:bg-gradient-to-r group-hover:text-white transition-all duration-300
+                  {color.startsWith('from-indigo') && 'group-hover:from-indigo-500 group-hover:to-purple-500'}
+                  {color.startsWith('from-emerald') && 'group-hover:from-emerald-500 group-hover:to-teal-500'}
+                  {color.startsWith('from-blue') && 'group-hover:from-blue-500 group-hover:to-cyan-500'}
+                  {color.startsWith('from-orange') && 'group-hover:from-orange-500 group-hover:to-amber-500'}
+                  {color.startsWith('from-rose') && 'group-hover:from-rose-500 group-hover:to-pink-500'}
+                  {color.startsWith('from-violet') && 'group-hover:from-violet-500 group-hover:to-purple-500'}
+                  {color.startsWith('from-sky') && 'group-hover:from-sky-500 group-hover:to-indigo-500'}">{skill}</span>
+              {/each}
             </div>
+          </div>
         </div>
-        {/if}
+      {/each}
+    </div>
+  </div>
+</section>
 
-        <style>
-            @keyframes gradient {
-                0% { background-position: 0% 50%; }
-                100% { background-position: 100% 50%; }
-            }
-            .animate-gradient {
-                animation: gradient 3s linear infinite;
-            }
-        </style>
-    </section>
-</main>
+<!-- Education -->
+<section id="education" class="py-16 lg:py-24 bg-gray-50">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-16">
+      <p class="text-indigo-600 font-semibold tracking-widest uppercase text-xs mb-3">Academic Background</p>
+      <h2 class="text-4xl sm:text-5xl font-bold text-gray-900">Education</h2>
+      <p class="text-gray-500 mt-3 max-w-xl mx-auto">Foundation that shaped my technical expertise</p>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto" bind:this={eduRef}>
+      {#each education as edu, i}
+        <div class="gsap-card group relative bg-gradient-to-br from-gray-50 to-white rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 border border-gray-100 hover:-translate-y-2 overflow-hidden">
+          <div class="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-indigo-100/50 to-purple-100/50 rounded-bl-[4rem] transition-all duration-500 group-hover:scale-150"></div>
+          <div class="relative z-10">
+            <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center text-white text-xl shadow-lg mb-6 group-hover:scale-110 group-hover:rotate-3 transition-all duration-500">
+              <i class="fas {edu.icon}"></i>
+            </div>
+            <h3 class="text-xl font-bold text-gray-900 mb-1 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-indigo-600 group-hover:to-purple-600 transition-all duration-300">{edu.school}</h3>
+            <p class="text-indigo-600 font-medium text-sm mb-4">{edu.degree}</p>
+            <div class="flex items-center gap-2 text-sm text-gray-500"><i class="far fa-calendar-alt text-indigo-400"></i><span>{edu.period}</span></div>
+          </div>
+        </div>
+      {/each}
+    </div>
+  </div>
+</section>
+
+<!-- Projects -->
+<section id="projects" class="py-16 lg:py-24 bg-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-16">
+      <p class="text-indigo-600 font-semibold tracking-widest uppercase text-xs mb-3">Portfolio</p>
+      <h2 class="text-4xl sm:text-5xl font-bold text-gray-900">Projects</h2>
+      <p class="text-gray-500 mt-3 max-w-xl mx-auto">Real-world applications built from the ground up</p>
+    </div>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8" bind:this={projectRef}>
+      {#each portfolio as item, i}
+        {@const color = accentColors[i % accentColors.length]}
+        <div class="gsap-card group relative bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2">
+          <div class="relative h-48 overflow-hidden">
+            <img src={item.image} alt={item.title} class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700" loading="lazy" />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            <div class="absolute top-3 left-3"><span class="text-xs font-medium bg-white/90 backdrop-blur-sm text-gray-700 px-2.5 py-1 rounded-full shadow-sm">{item.period}</span></div>
+            <div class="absolute bottom-3 left-3 opacity-0 group-hover:opacity-100 transition-all duration-500 translate-y-2 group-hover:translate-y-0">
+              <a href={item.link} target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 bg-white/90 backdrop-blur-sm text-gray-900 px-3 py-1.5 rounded-full text-xs font-medium hover:bg-white transition-colors shadow-lg"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+            </div>
+          </div>
+          <div class="relative p-6">
+            <div class="absolute top-0 left-6 right-6 h-0.5 bg-gradient-to-r {color} scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></div>
+            <p class="text-xs font-medium text-indigo-600 mb-1">{item.subtitle}</p>
+            <h3 class="text-lg font-bold text-gray-900 mb-2 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r {color} transition-all duration-300">{item.title}</h3>
+            <p class="text-sm text-gray-600 leading-relaxed line-clamp-3 mb-4">{item.desc}</p>
+            <div class="flex flex-wrap gap-1.5 mb-4">
+              {#each item.tech as tech}
+                <span class="px-2.5 py-1 text-xs font-medium rounded-lg bg-gray-100 text-gray-600 group-hover:bg-gradient-to-r {color} group-hover:text-white transition-all duration-300">{tech}</span>
+              {/each}
+            </div>
+            <a href={item.link} target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-sm font-medium text-indigo-600 hover:text-indigo-800 transition-all duration-300 group/link">
+              <span>View Project</span> <i class="fas fa-arrow-right text-xs transition-all duration-300 group-hover/link:translate-x-1"></i>
+            </a>
+          </div>
+        </div>
+      {/each}
+    </div>
+  </div>
+</section>
+
+<!-- Certifications -->
+<section id="certifications" class="py-16 lg:py-24 bg-gray-50">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-16">
+      <p class="text-indigo-600 font-semibold tracking-widest uppercase text-xs mb-3">Credentials</p>
+      <h2 class="text-4xl sm:text-5xl font-bold text-gray-900">Certifications</h2>
+      <p class="text-gray-500 mt-3 max-w-xl mx-auto">Industry-recognized certifications that validate my expertise</p>
+    </div>
+
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8" bind:this={certRef}>
+      {#each certifications as cert, i}
+        {@const color = accentColors[i % accentColors.length]}
+        <PopUpImage imageSrc={cert.photo} altText={cert.name}>
+          <div class="gsap-card group relative bg-gradient-to-br from-gray-50 to-white rounded-2xl p-6 shadow-md hover:shadow-2xl transition-all duration-500 border border-gray-100 hover:-translate-y-2 h-full cursor-pointer overflow-hidden">
+            <div class="absolute top-0 right-0 w-24 h-24 bg-gradient-to-br {color} opacity-5 rounded-bl-[3rem] transition-all duration-500 group-hover:opacity-10 group-hover:scale-150"></div>
+            <div class="relative z-10">
+              <div class="flex items-start justify-between mb-4">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-br {color} flex items-center justify-center text-white shadow-md group-hover:scale-110 group-hover:rotate-6 transition-all duration-500"><i class="fas fa-certificate text-sm"></i></div>
+                <span class="text-xs font-medium text-gray-400 bg-gray-100 px-2.5 py-1 rounded-full whitespace-nowrap">{cert.date}</span>
+              </div>
+              <h3 class="text-base font-bold text-gray-900 mb-1.5 leading-snug group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r {color} transition-all duration-300">{cert.name}</h3>
+              <p class="text-sm text-indigo-600 font-medium mb-3">{cert.issuer}</p>
+              <div class="flex items-center gap-1.5 text-xs text-gray-400 bg-gray-50 rounded-lg px-3 py-2 mb-4"><i class="fas fa-fingerprint text-indigo-300"></i><span class="truncate">{cert.id}</span></div>
+              {#if cert.link}
+                <a href={cert.link} target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-sm font-medium text-indigo-600 hover:text-indigo-800 transition-all duration-300 group/link" on:click|stopPropagation><i class="fas fa-shield-alt text-xs"></i><span>Verify</span><i class="fas fa-external-link-alt text-xs transition-transform group-hover/link:translate-x-0.5"></i></a>
+              {:else}
+                <span class="inline-flex items-center gap-1.5 text-sm text-gray-400"><i class="fas fa-shield-alt text-xs"></i><span>Credential</span></span>
+              {/if}
+            </div>
+          </div>
+        </PopUpImage>
+      {/each}
+    </div>
+  </div>
+</section>
