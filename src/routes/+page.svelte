@@ -15,10 +15,14 @@
   import esinta from '$lib/asset/esinta.jpeg';
   import hbics from '$lib/asset/hbics.jpg';
   import onedata from '$lib/asset/onedata.jpeg';
+  import sipenggaji from '$lib/asset/sipenggaji.jpeg';
   import panglima from '$lib/asset/panglima.jpeg';
   import portal from '$lib/asset/portal.jpeg';
   import sinazwa from '$lib/asset/sinazwa.jpeg';
   import onjourney from '$lib/asset/onjourney.jpeg';
+  import sppdigital from '$lib/asset/spp-digital-system.png';
+  import infratech from '$lib/asset/infratech.png';
+  import basuhyuk from '$lib/asset/basuhyuk-mobile.jpeg';
 
   let heroRef;
   let expRef;
@@ -147,7 +151,10 @@
   ];
 
   const portfolio = [
-    { title: 'SI-Penggaji', subtitle: 'Payroll System', period: 'Jan 2025 - Present', desc: 'Comprehensive payroll system reducing processing time and eliminating manual errors. Centralized employee management, automated attendance, leave requests, and digital payslip generation.', image: onedata, link: 'https://si-penggaji.com/', tech: ['Django', 'Tailwind CSS', 'PostgreSQL'] },
+    { title: 'SPP Digital System', subtitle: 'School Tuition Management', period: '2026', desc: 'Digital platform for managing student tuition payments with automated billing schedules, installment tracking, real-time payment reconciliation, and comprehensive financial reporting. Streamlines school financial operations for educational institutions.', image: sppdigital, link: 'https://spp-digital-system.vercel.app/', tech: ['Golang', 'Nuxt.js', 'PostgreSQL', 'Finance Skill'] },
+    { title: 'Infratech', subtitle: 'Infrastructure Management', period: '2026', desc: 'Comprehensive platform for managing infrastructure projects and assets, featuring inventory tracking, maintenance scheduling, work order management, and data-driven reporting dashboards. Built to streamline operational workflows.', image: infratech, link: 'https://infratechnetwork.com/', tech: ['Laravel', 'Tailwind CSS', 'MySQL'] },
+    { title: 'Basuhyuk Mobile', subtitle: 'Laundry Service App', period: '2026', desc: 'On-demand laundry service mobile application connecting customers with local laundry providers. Features real-time order tracking, scheduled pickup/delivery, integrated payment gateway, and provider management for a seamless service experience.', image: basuhyuk, link: '#', tech: ['Golang', 'GoFiber', 'React Native', 'Tailwind CSS', 'PostgreSQL'] },
+    { title: 'SI-Penggaji', subtitle: 'Payroll System', period: 'Jan 2025 - Present', desc: 'Comprehensive payroll system reducing processing time and eliminating manual errors. Centralized employee management, automated attendance, leave requests, and digital payslip generation.', image: sipenggaji, link: 'https://si-penggaji.com/', tech: ['Django', 'Tailwind CSS', 'PostgreSQL'] },
     { title: 'Disperindagkop', subtitle: 'Information System', period: 'Sep 2024 - Present', desc: 'Data-driven system for North Kalimantan\'s Department of Industry consolidating SME data across 5 districts with analytics dashboards.', image: disperindagkop, link: 'https://disperindagkop.tiaka.web.id/', tech: ['Laravel', 'React.js', 'OpenLayers', 'ShadCN UI', 'TypeScript'] },
     { title: 'SI-Nazwa', subtitle: 'Bakery Management', period: 'Apr 2024 - Present', desc: 'Mobile-first bakery solution integrating inventory, production, delivery tracking, and POS with real-time sync.', image: sinazwa, link: 'https://pia-nazwa-smd.shop/', tech: ['Next.js', 'Laravel', 'React.js', 'Tailwind CSS'] },
     { title: 'Satu Data Mahulu', subtitle: 'Open Data Platform', period: 'Feb 2023 - Present', desc: 'Unified data platform consolidating information from 12 government departments with API integrations.', image: onedata, link: 'https://data.mahakamulukab.go.id/', tech: ['CKAN', 'Django', 'Python', 'PostgreSQL', 'Docker'] },
