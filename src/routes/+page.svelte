@@ -89,6 +89,7 @@
     },
     {
       company: 'Expertri',
+      location: 'Samarinda',
       roles: [
         { title: 'Software Engineer', period: 'Apr 2025 - Sep 2025', highlights: [
           'Engineered custom Odoo ERP modules that streamlined business processes for clients.',
@@ -102,6 +103,7 @@
     },
     {
       company: 'Panglima Propertindo',
+      location: 'Yogyakarta (Remote)',
       roles: [
         { title: 'Frontend Developer', period: 'Jan 2024 - Apr 2025', highlights: [
           'Engineered responsive interfaces with Next.js and React, increasing engagement and reducing bounce rates.',
@@ -115,6 +117,7 @@
     },
     {
       company: 'Universitas Muhammadiyah Kalimantan Timur',
+      location: 'Samarinda',
       roles: [
         { title: 'Software Developer', period: 'Jun 2022 - Dec 2024', highlights: [
           'Spearheaded university applications digitizing administrative processes.',
@@ -128,6 +131,7 @@
     },
     {
       company: 'On-Journey.id',
+      location: 'Bali (Remote)',
       roles: [
         { title: 'Back-end Developer', period: 'Feb 2021 - Jan 2024', highlights: [
           'Architected scalable backend systems supporting substantial user growth.',
@@ -137,6 +141,7 @@
     },
     {
       company: 'Yayasan Tunas Cahaya Bangsa',
+      location: 'Balikpapan (Hybrid)',
       roles: [
         { title: 'Web Developer', period: 'Sep 2021 - Jul 2023', highlights: [
           'Built web applications with Vue.js, Laravel, Flutter, TailwindCSS, and Django REST Framework.',
