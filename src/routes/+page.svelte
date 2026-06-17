@@ -134,8 +134,10 @@
       location: 'Bali (Remote)',
       roles: [
         { title: 'Back-end Developer', period: 'Feb 2021 - Jan 2024', highlights: [
-          'Architected scalable backend systems supporting substantial user growth.',
-          'Optimized database queries reducing server load and cutting API response times.',
+          'Developed backend itinerary feature enabling dynamic trip planning and scheduling.',
+          'Built product catalog system with search and filtering capabilities for travel packages.',
+          'Designed and implemented admin dashboard for managing platform content and user data.',
+          'Contributed to frontend development with Vue.js including itinerary UI, admin form inputs, review and rating features on catalog.',
         ]},
       ],
     },
@@ -143,8 +145,13 @@
       company: 'Yayasan Tunas Cahaya Bangsa',
       location: 'Balikpapan (Hybrid)',
       roles: [
-        { title: 'Web Developer', period: 'Sep 2021 - Jul 2023', highlights: [
-          'Built web applications with Vue.js, Laravel, Flutter, TailwindCSS, and Django REST Framework.',
+        { title: 'IT & Web Developer', period: 'Sep 2021 - Jul 2023', highlights: [
+          'Built employee check-in/check-out system for managing staff entry and exit permits.',
+          'Redesigned company profile website with modern UI and improved user experience.',
+          'Prepared graduation events and major school events as IT Support, setting up operator devices and serving as media operator.',
+          'Set up and managed media operators for music and subtitles during school events.',
+          'Provided IT support for maintenance of school PCs and laptops.',
+          'Collaborated with ICT staff on network testing and maintenance across the foundation.',
         ]},
       ],
     },
