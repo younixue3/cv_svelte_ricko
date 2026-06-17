@@ -76,7 +76,7 @@
       company: 'Keiko Julia Jewelry',
       location: 'Singapore (Remote)',
       roles: [
-        { title: 'Full-Stack Developer', period: 'Oct 2025 - Present', highlights: [
+        { title: 'Full-Stack Developer', period: 'Oct 2025 - June 2026', highlights: [
           'Built official website with Next.js, React, Tailwind, Firebase; raised PageSpeed 49 to 81+ via WebP, caching, Core Web Vitals.',
           'Implemented seasonal themes, dynamic SEO, cart system, Google-login RBAC, product-variant manager, Shopee-Express logistics, FCM.',
           'Enhanced Android app stability; fixed NPM/TS issues, prepared Play & App Store pipelines.',
